@@ -1,0 +1,21 @@
+Package: RHawkes
+Type: Package
+Title: Renewal Hawkes Process
+Version: 0.0
+Date: 2017-11-16
+Author: Feng Chen <feng.chen@unsw.edu.au>
+        Thomas Stindl <t.stindl@unsw.edu.au>
+Maintainer: Feng Chen <feng.chen@unsw.edu.au>
+Description: Simulate a renewal Hawkes (RHawkes) self-exciting process,
+    with a given immigrant hazard rate function and offspring density function.
+    Calculate the likelihood of a RHawkes process with given hazard rate function
+    and offspring density function for an (increasing) sequence of event times.
+    Calculate the Rosenblatt residuals of the event times. Predict
+    future event times based on observed event times up to a given time.
+    For details see Chen and Stindl (2017) <doi:10.1080/10618600.2017.1341324>.
+License: GPL (>= 2)
+Depends: R (>= 2.10), IHSEP
+NeedsCompilation: no
+Packaged: 2017-11-17 02:05:35 UTC; z3243864
+Repository: CRAN
+Date/Publication: 2017-11-17 11:48:19 UTC

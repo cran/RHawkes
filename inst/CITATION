@@ -1,0 +1,22 @@
+citHeader("To cite the RHawkes package, please use:")
+citEntry(
+ entry="Article",
+ title="Direct Likelihood Evaluation for the Renewal Hawkes Process", 
+ journal="Journal of Computational and Graphical Statistics",
+ volume= "xx",
+ number="xx",
+ pages="xxxx-xxxx",
+ year="2017",
+ doi="10.1080/10618600.2017.1341324",
+ author="Feng Chen and Thomas Stindl",
+ textVersion="Chen, F. and Stindl, T. (2017) Direct Likelihood Evaluation for the Renewal Hawkes Process. Journal
+ of Computational and Graphical Statistics. http://dx.doi.org/10.1080/10618600.2017.1341324"
+)
+
+citEntry(
+ entry="Manual",
+ title="RHawkes: Renewal Hawkes Process", 
+ author="Feng Chen and Thomas Stindl",
+ note="R package version 0.0",
+ textVersion="Chen, F. and Stindl, T. (2017) RHawkes: Renewal Hawkes Process. R package version 0.0."
+)

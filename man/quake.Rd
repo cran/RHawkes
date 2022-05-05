@@ -2,33 +2,28 @@
 \alias{quake}
 \docType{data}
 \title{
-  Japanese Earthquake Data
+An RHawkes earthquake data set
 }
 \description{
-  Times and magnitudes (Richter scale) of 483 shallow earthquakes in
-  an offshore region east of Honshu and south of Hokkaido, for the
-  period 1885-1980.
+An earthquake data set containing the earthquake occurrence times near the Japan 
+region previously examined by Ogata (1998).
 }
-\usage{data("quake")}
+
+\usage{data(quake)}
 \format{
-  A data frame with 483 observations on the following 2 variables.
-  \describe{
-        \item{\code{time}}{a numeric vector giving earthquake times in
-	  days since start of 1885}
-	    \item{\code{mag}}{a numeric vector giving the magnitudes of
-    the
-    earthquakes}
-}
+  The format is a vector of the arrival/birth times of earthquakes.
 }
 \details{
-  Times of arrivals of earthquake occurences in a vector in ascending order.
+  Times of arrivals of earthquake occurrences in a vector in ascending order.
 }
 \source{
   Simulated by a call to the function \code{simHawkes1}.
 }
 \examples{
+\dontrun{
 data(quake)
-summary(quake)
+## number of earthquake occurrences
+nrow(quake)
+}
 }
 \keyword{datasets}
-

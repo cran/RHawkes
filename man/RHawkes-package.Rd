@@ -22,4 +22,4 @@ Maintainer: \packageMaintainer{RHawkes}
 }
 
 \keyword{ package }
-
+\keyword{ Hawkes process }

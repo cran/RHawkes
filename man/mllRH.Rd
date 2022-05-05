@@ -6,7 +6,7 @@ Minus loglikelihood of a RHawkes model
 \description{
 Calculates the minus loglikelihood of a RHawkes model with given
 immigration hazard function \eqn{\mu}, offspring density function 
-\eqn{h} and bracnhing ratio \eqn{\eta} for event times \code{tms} 
+\eqn{h} and branching ratio \eqn{\eta} for event times \code{tms} 
 on interval \eqn{[0,cens]}.
 }
 \usage{
@@ -39,7 +39,7 @@ mllRH(tms, cens, par,
     A (vectorized) function. The offspring density function. 
 }
   \item{mu.fn}{
-    A (vectorized) function. The immigration hzard function. 
+    A (vectorized) function. The immigration hazard function. 
 }
   \item{H.fn}{
     A (vectorized) function. Its value at \code{t} gives the integral of
@@ -52,7 +52,7 @@ mllRH(tms, cens, par,
 }
 
 \value{
-  The value of the negative log-liklihood. 
+  The value of the negative log-likelihood. 
 }
 
 \author{
@@ -61,41 +61,18 @@ mllRH(tms, cens, par,
 }
 
 \examples{
-    ## simulate data from a RHawkes process (Hawkes, by the defaulting
-    ## parameters)
-    set.seed(1)
-    ce <- 50;
-    tms <- simRHawkes(cens=ce,par.redist=list(shape=1,scale=1.5),branching.ratio=0.3)
-    ## calculate the MLE when data is treated as Hawkes process event
-    ## times on [0,ce]
-    sim.est0 <- optim(c(1.5,1,0.3),
-                      function(p){
-                          mloglik1d(jtms=tms,TT=ce,
-                                    nu=function(x){rep(1/p[1],length(x))},
-                                    gcoef=c(p[3]*p[2],p[2]),
-                                    Inu=function(x){x/p[1]})
-                      },
-                      control=list(maxit=5000,trace=TRUE,reltol=1e-9),
-                      )
-    ## calculate the MLE when data is treated as RHawkes process event
-    ## times on [0,ce]
-    sim.est1 <- optim(c(1,sim.est0$par),
-                      mllRH,tms=tms,cens=ce,
-                      control=list(maxit = 5000, trace = TRUE,reltol=1e-9),
-                      hessian=TRUE)
-    sim.est1$par
-\donttest{
+\dontrun{
 ## earthquake times over 96 years
 data(quake);
 tms <- sort(quake$time);
-# add some random noise to the simultaneous occuring event times
+# add some random noise to the simultaneous occurring event times
 tms[213:214] <- tms[213:214] + 
                     sort(c(runif(1, -1, 1)/(24*60), runif(1, -1, 1)/(24*60)))
 
 
 ## calculate the minus loglikelihood of an RHawkes with some parameters 
 ## the default hazard function and density functions are Weibull and 
-## exponential respectivley
+## exponential respectively
 mllRH(tms, cens = 96*365.25 , par = c(0.5, 20, 1000, 0.5))
 ## calculate the MLE for the parameter assuming known parametric forms
 ## of the immigrant hazard function and offspring density functions.  
@@ -108,29 +85,6 @@ system.time(est <- optim(c(0.5, 20, 1000, 0.5),
 est$par
 ## standard error estimates:
 diag(solve(est$hessian))^0.5
-}
-\dontrun{
-    set.seed(1)
-    ce <- 2000;
-    tms <- simRHawkes(cens=ce,par.redist=list(shape=1,scale=2),branching.ratio=0.4)
-    ## calculate the MLE when data is treated as Hawkes process event
-    ## times on [0,ce]
-    sim.est0 <- optim(c(2,1,0.4),
-                      function(p){
-                          mloglik1d(jtms=tms,TT=ce,
-                                    nu=function(x){rep(1/p[1],length(x))},
-                                    gcoef=c(p[3]*p[2],p[2]),
-                                    Inu=function(x){x/p[1]})
-                      },
-                      control=list(maxit=5000,trace=TRUE,reltol=1e-9),
-                      )
-    ## calculate the MLE when data is treated as Weibull RHawkes
-    ## process event times on [0,ce]
-    system.time(sim.est1 <- optim(c(1,sim.est0$par),
-                      mllRH,tms=tms,cens=ce,
-                      control=list(maxit = 5000, trace = TRUE,reltol=1e-9),
-                      hessian=TRUE))
-    sim.est1$par
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

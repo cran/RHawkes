@@ -21,7 +21,7 @@ pred.haz(x, tms, cens, par,
 }
 \arguments{
   \item{x}{
-    A scaler. The amount of time after the censoring time \code{cens}.
+    A scalar. The amount of time after the censoring time \code{cens}.
 }
   \item{tms}{
     A numeric vector, with values sorted in ascending order. The event times

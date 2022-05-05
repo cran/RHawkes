@@ -3,20 +3,35 @@ citEntry(
  entry="Article",
  title="Direct Likelihood Evaluation for the Renewal Hawkes Process", 
  journal="Journal of Computational and Graphical Statistics",
- volume= "xx",
- number="xx",
- pages="xxxx-xxxx",
- year="2017",
+ volume= "27",
+ number="1",
+ pages="119-131",
+ year="2018",
  doi="10.1080/10618600.2017.1341324",
- author="Feng Chen and Thomas Stindl",
- textVersion="Chen, F. and Stindl, T. (2017) Direct Likelihood Evaluation for the Renewal Hawkes Process. Journal
- of Computational and Graphical Statistics. http://dx.doi.org/10.1080/10618600.2017.1341324"
+ author="Feng Chen and Tom Stindl",
+ textVersion="Chen, F. and Stindl, T. (2018) Direct Likelihood Evaluation for the Renewal Hawkes Process. Journal
+ of Computational and Graphical Statistics 27,1:119-131. <doi:10.1080/10618600.2017.1341324>"
+)
+
+citEntry(
+ entry="Article",
+ title="Accelerating the estimation of renewal Hawkes self-exciting point processes", 
+ journal="Statistics and Computing",
+ volume= "31",
+ number="26",
+ pages="1-26",
+ year="2021",
+ doi="10.1007/s11222-021-10002-0",
+ author="Feng Chen and Tom Stindl",
+ textVersion="Stindl, T., Chen, F. (2021) Accelerating the estimation of renewal Hawkes self-exciting point processes. Statistics and Computing 31, 26. <doi:10.1007/s11222-021-10002-0>"  
 )
 
 citEntry(
  entry="Manual",
  title="RHawkes: Renewal Hawkes Process", 
  author="Feng Chen and Thomas Stindl",
- note="R package version 0.0",
- textVersion="Chen, F. and Stindl, T. (2017) RHawkes: Renewal Hawkes Process. R package version 0.0."
+ year = "2022",
+ note="R package version 1.0",
+ url="https://cran.r-project.org/package=RHawkes",
+ textVersion="Chen, F. and Stindl, T. (2022) RHawkes: Renewal Hawkes Process. R package version 1.0 <URL: https://cran.r-project.org/package=RHawkes>"
 )

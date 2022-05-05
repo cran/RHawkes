@@ -1,21 +1,41 @@
 Package: RHawkes
 Type: Package
 Title: Renewal Hawkes Process
-Version: 0.0
-Date: 2017-11-16
-Author: Feng Chen <feng.chen@unsw.edu.au>
-        Thomas Stindl <t.stindl@unsw.edu.au>
-Maintainer: Feng Chen <feng.chen@unsw.edu.au>
-Description: Simulate a renewal Hawkes (RHawkes) self-exciting process,
-    with a given immigrant hazard rate function and offspring density function.
-    Calculate the likelihood of a RHawkes process with given hazard rate function
-    and offspring density function for an (increasing) sequence of event times.
-    Calculate the Rosenblatt residuals of the event times. Predict
-    future event times based on observed event times up to a given time.
-    For details see Chen and Stindl (2017) <doi:10.1080/10618600.2017.1341324>.
+Version: 1.0
+Date: 2022-5-4
+Authors@R: c(person(given="Feng", 
+	            family="Chen", 
+		    role = c("aut", "cre"),
+		    email = "feng.chen@unsw.edu.au",
+		    comment = c(ORCID="0000-0002-9646-3338")
+		    ),
+             person(given="Tom", 
+	            family="Stindl", 
+		    role = "ctb", 
+		    email="t.stindl@unsw.edu.au",
+		    comment=c(ORCID="0000-0001-8627-9337")
+		    )
+             )
+Description: The renewal Hawkes (RHawkes) process (Wheatley,
+    Filimonov, and Sornette, 2016 <doi:10.1016/j.csda.2015.08.007>) is
+    an extension to the classical Hawkes self-exciting point process
+    widely used in the modelling of clustered event sequence data.
+    This package provides functions to simulate the RHawkes process
+    with a given immigrant hazard rate function and offspring birth
+    time density function, to compute the exact likelihood of a
+    RHawkes process using the recursive algorithm proposed by Chen and
+    Stindl (2018) <doi:10.1080/10618600.2017.1341324>, to compute the
+    Rosenblatt residuals for goodness-of-fit assessment, and to
+    predict future event times based on observed event times up to a
+    given time. A function implementing the linear time RHawkes
+    process likelihood approximation algorithm proposed in Stindl and
+    Chen (2021) <doi:10.1007/s11222-021-10002-0> is also included.
 License: GPL (>= 2)
 Depends: R (>= 2.10), IHSEP
 NeedsCompilation: no
-Packaged: 2017-11-17 02:05:35 UTC; z3243864
+Packaged: 2022-05-04 13:17:53 UTC; z3243864
+Author: Feng Chen [aut, cre] (<https://orcid.org/0000-0002-9646-3338>),
+  Tom Stindl [ctb] (<https://orcid.org/0000-0001-8627-9337>)
+Maintainer: Feng Chen <feng.chen@unsw.edu.au>
 Repository: CRAN
-Date/Publication: 2017-11-17 11:48:19 UTC
+Date/Publication: 2022-05-05 14:40:09 UTC

@@ -1,17 +1,19 @@
-\name{sim.pred}
-\alias{sim.pred}
+\name{sim.pred1}
+\alias{sim.pred1}
 \title{
-Simulate a fitted RHawkes process model
+  Simulate a fitted RHawkes process model for prediction purposes
 }
 \description{
-Simulate a fitted RHawkes process model after the censoring time \code{cens} 
-to a future time point \code{cens.tilde}.
+Simulate a fitted RHawkes process model from the censoring time \code{cens} 
+to a future time point \code{cens.tilde}, conditional on the observed
+event times until the censoring time.
 }
 \usage{
-sim.pred(tms, re.dist = rweibull, par, 
+sim.pred1(tms, par, re.dist = rweibull, 
     par.redist = list(shape = par[1], scale = par[2]), 
-    h.fn = function(x, p) dexp(x, rate = 1 / p), p.ofd = par[3], 
-    branching.ratio = par[4], cens, cens.tilde = cens * 1.5, 
+    of.dis="exp", par.ofdis = list(rate=par[3]), 
+    branching.ratio = par[4], cens=tail(tms,1)+mean(diff(tms))/2, 
+    cens.tilde = cens * 1.5, 
     mu.fn = function(x, p) {
         exp(dweibull(x, shape = p[1], scale = p[2], log = TRUE) - 
         pweibull(x, shape = p[1], scale = p[2], lower.tail = FALSE, log.p = TRUE))
@@ -21,35 +23,36 @@ sim.pred(tms, re.dist = rweibull, par,
   \item{tms}{
     A numeric vector, with values sorted in ascending order. Event times
     to fit the RHawkes point process model.}
-  \item{re.dist}{
-    A (vectorized) function. The immigrant renewal distribution function.
-}
   \item{par}{
     A numeric vector, giving the parameters of the model with the 
     immigration parameters \eqn{\mu(.)}, offspring parameters \eqn{h(.)} and lastly
     the branching ratio \eqn{\eta(.)}.
-}
+  }
+  \item{re.dist}{
+    A (vectorized) function. The function to simulate from the immigrant
+    waiting times distribution.
+  }
   \item{par.redist}{
-    A numeric vector. The parameters of the immigrant renewal distribution.  
-}
-  \item{h.fn}{
-    A (vectorized) function. The offspring density function. 
-}
-  \item{p.ofd}{
-    A (named) list. The parameters of the offspring density.
-}
+    A (named) list, giving the parameters of the immigrant waiting time distribution.  
+  }
+  \item{of.dis}{
+    A character string, for the name of the offspring birth time distribution. 
+  }
+  \item{par.ofdis}{
+    A (named) list, giving the parameters of the offspring birth time distribution.
+  }
   \item{branching.ratio}{
-    A scalar. The branching ratio parameter.    
-}
+    A scalar in [0,1), the branching ratio parameter.    
+  }
   \item{cens}{
     A scalar. The censoring time. 
-}
+  }
   \item{cens.tilde}{
-    A scalar. The future time that the simulation run until. 
-}
+    A scalar. The future time to run the simulation to. 
+  }
   \item{mu.fn}{
     A (vectorized) function. The immigration hazard function. 
- }
+  }
 }
 
 \value{
@@ -62,6 +65,9 @@ A numeric vector that contains the simulated event times from censoring time
   Tom Stindl <t.stindl@unsw.edu.au>
 }
 
+\seealso{
+  \code{\link{sim.pred}}.
+}
 
 \examples{
 N <- 5; i <- 0;
@@ -72,8 +78,8 @@ tms[213:214] <- tms[213:214] +
 # simulate future event time based on MLE fitted RHawkes model
 times <- replicate(N,
                    {cat(i<<-i+1,'\n');
-                   sim.pred(tms = tms, par = c(0.314, 22.2, 1266, 0.512),
-                            cens=35063)
+                   sim.pred1(tms = tms, par = c(0.314, 22.2, 1266, 0.512),
+                             cens=35063)
                    })
 plot(NA,NA,xlim=c(0,35063*1.5),ylim=c(0,max(lengths(times))+nrow(quake)),
      xlab="time",ylab="Sample path")

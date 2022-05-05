@@ -5,7 +5,7 @@ Minus loglikelihood of a RHawkes model with Rosenblatt residuals}
 \description{
 Calculates the minus loglikelihood of a RHawkes model with given
 immigration hazard function \eqn{\mu}, offspring density function 
-\eqn{h} and bracnhing ratio \eqn{\eta} for event times \code{tms} 
+\eqn{h} and branching ratio \eqn{\eta} for event times \code{tms} 
 on interval \eqn{[0,cens]}. The same as \code{mllRH} although this
 version also returns the Rosenblatt residuals.
 }
@@ -36,7 +36,7 @@ mllRH2(tms, cens, par, h.fn = function(x, p) dexp(x, rate = 1/p),
     A (vectorized) function. The offspring density function. 
 }
   \item{mu.fn}{
-    A (vectorized) function. The immigration hzard function. 
+    A (vectorized) function. The immigration hazard function. 
 }
   \item{H.fn}{
     A (vectorized) function. Its value at \code{t} gives the integral of
@@ -66,7 +66,9 @@ Calculate the RHawkes point process Rosenblatt residuals
 \seealso{
 \code{mllRH}}
 \examples{
-tmp <- mllRH2(sort(runif(50,0,100)),100,c(1,2,2,0.05))
+\dontrun{
+tmp <- mllRH2(sort(runif(1000,0,1000)),1001,c(2,1,0.5,1))
+par(mfrow=c(1,2))
 qqunif<-function(dat,...){
   dat<-sort(as.numeric(dat));
   n<-length(dat);
@@ -74,11 +76,12 @@ qqunif<-function(dat,...){
   plot(pvec,dat,xlab="Theoretical Quantiles",
        ylab="Sample Quantiles",main="Uniform Q-Q Plot",...)
 }
-par(mfrow=c(1,2))
 qqunif(tmp$U)
 acf(tmp$U)
 ks.test(tmp$U,"punif")
 }
+}
+% Add one or more standard keywords, see file 'KEYWORDS' in the
+% R documentation directory.
 \keyword{ Rosenblatt residual }
-\keyword{ goodness-of-fit }
 \keyword{ point process }% __ONLY ONE__ keyword per line

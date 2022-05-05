@@ -6,7 +6,7 @@ Minus loglikelihood of a RHawkes model with parent probabilities
 \description{
 Calculates the minus loglikelihood of a RHawkes model with given
 immigration hazard function \eqn{\mu}, offspring density function 
-\eqn{h} and bracnhing ratio \eqn{\eta} for event times \code{tms} 
+\eqn{h} and branching ratio \eqn{\eta} for event times \code{tms} 
 on interval \eqn{[0,cens]}. The same as \code{mllRH} although this
 version also returns the parent probabilities.
 }
@@ -16,11 +16,11 @@ mllRH1(tms, cens, par,
       mu.fn = function(x, p) {
         exp(dweibull(x, shape = p[1], scale = p[2], log = TRUE) - 
         pweibull(x, shape = p[1], scale = p[2], lower.tail = FALSE, log.p = TRUE))
-      }, 
-      H.fn = function(x, p) pexp(x, rate = 1/p), 
-      Mu.fn = function(x, p) {
-        -pweibull(x, shape = p[1], scale = p[2], lower.tail = FALSE, log.p = TRUE)
-      })
+        }, 
+        H.fn = function(x, p) pexp(x, rate = 1/p), 
+        Mu.fn = function(x, p) {
+          -pweibull(x, shape = p[1], scale = p[2], lower.tail = FALSE, log.p = TRUE)
+        })
 }
 \arguments{
   \item{tms}{
@@ -39,7 +39,7 @@ mllRH1(tms, cens, par,
     A (vectorized) function. The offspring density function. 
 }
   \item{mu.fn}{
-    A (vectorized) function. The immigration hzard function. 
+    A (vectorized) function. The immigration hazard function. 
 }
   \item{H.fn}{
     A (vectorized) function. Its value at \code{t} gives the integral of
@@ -53,7 +53,7 @@ mllRH1(tms, cens, par,
 
 \value{
 \item{mll}{minus log-likelihood}
-\item{log.p}{parent probabilities (on the log scale)}
+\item{log.p}{parent probabilities}
 \item{n}{number of events}
 }
 
@@ -64,7 +64,7 @@ mllRH1(tms, cens, par,
 \seealso{
 \code{mllRH}}
 \examples{
-tmp <- mllRH1(sort(runif(10,0,100)), 100, c(2,1,0.5,1))
+tmp <- mllRH1(sort(runif(1000,0,1000)), 1001, c(2,1,0.5,1))
 for(i in 1:tmp$n)
   cat(exp(tmp$log.p[i*(i - 1)/2 + 1:i]), "\n")    
 }

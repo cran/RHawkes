@@ -25,7 +25,7 @@ simRHawkes(re.dist = rweibull, par.redist = list(shape = 1, scale = 1),
     A (vectorized) function. The offspring density function.    
 }
   \item{p.ofd}{
-    A numeric vector. The paramters of the offspring density.
+    A numeric vector. The parameters of the offspring density.
 }
   \item{branching.ratio}{
     A scalar. The branching ratio parameter.    
@@ -46,9 +46,9 @@ simRHawkes(re.dist = rweibull, par.redist = list(shape = 1, scale = 1),
 }
 \details{
   The function works by simulating the arrival times of immigrants
-  accoridng to the renewal immigration distribution. The birth times of 
+  according to the renewal immigration distribution. The birth times of 
   offspring from each immigrant are then simulated according to an 
-  inhomogenous Poisson processes with appropriate intensity functions.
+  inhomogeneous Poisson processes with appropriate intensity functions.
 }
 \value{
   A numeric vector of all pooled events (immigration/birth) times of

@@ -12,7 +12,7 @@ function(re.dist = rweibull, par.redist = list(shape = 1, scale = 1),
   wtms <- c(wtms, do.call(re.dist, args = c(n = n0, par.redist)))
   last.i.tm <- sum(wtms)
   while(last.i.tm <= cens){
-    tmp <- do.call(re.dist, args = list(n = B, unlist(par.redist)))
+    tmp <- do.call(re.dist, args = c(n = B, par.redist))
     wtms <- c(wtms,tmp)
     last.i.tm <- last.i.tm + sum(tmp)
   }

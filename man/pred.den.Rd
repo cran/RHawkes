@@ -21,7 +21,7 @@ pred.den(x, tms, cens, par,
 }
 \arguments{
   \item{x}{
-    A scaler. The amount of time after the censoring time \code{cens}.
+    A scalar. The amount of time after the censoring time \code{cens}.
 }
   \item{tms}{
     A numeric vector, with values sorted in ascending order. The event times
@@ -39,7 +39,7 @@ pred.den(x, tms, cens, par,
     A (vectorized) function. The offspring density function. 
 }
   \item{mu.fn}{
-    A (vectorized) function. The immigration hzard function. 
+    A (vectorized) function. The immigration hazard function. 
 }
   \item{H.fn}{
     A (vectorized) function. Its value at \code{t} gives the integral of
